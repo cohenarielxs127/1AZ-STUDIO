@@ -2,48 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>1AZ STUDIO | Design Services</title>
+  <title>1AZ STUDIO – Digital Design Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="1AZ STUDIO - Premium design services in Paris: branding, UI/UX, web & print design." />
+  <meta name="description" content="1AZ STUDIO – Digital design studio in Paris. Branding, UI/UX, creative visuals & motion design." />
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #05060a;
-      --bg-soft: #0b0d14;
-      --accent: #ff4b5c;
-      --accent-soft: rgba(255, 75, 92, 0.12);
-      --accent-grad: linear-gradient(135deg, #ff4b5c, #ffb347);
-      --text-main: #f5f5f7;
-      --text-muted: #9b9dac;
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --card-bg: rgba(15, 17, 27, 0.92);
-      --radius-xl: 24px;
-      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.6);
-      --transition-fast: 0.22s ease-out;
+      --bg: #050814;
+      --bg-elevated: #070a18;
+      --bg-soft: #0b1022;
+      --accent-1: #ff4b5c;
+      --accent-2: #5b8dff;
+      --accent-3: #ffb347;
+      --text-main: #f7f7ff;
+      --text-muted: #9fa2bd;
+      --border-soft: rgba(255, 255, 255, 0.06);
+      --shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.8);
+      --radius-xl: 22px;
+      --transition-fast: 0.24s ease-out;
     }
 
-    *,
-    *::before,
-    *::after {
+    * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       min-height: 100vh;
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #1b1b2f 0, #05060a 45%, #000000 100%);
+      font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #151731 0, #050814 45%, #02030a 100%);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     img {
       max-width: 100%;
-      height: auto;
       display: block;
     }
 
@@ -52,548 +50,736 @@
       text-decoration: none;
     }
 
-    .page {
-      max-width: 1160px;
+    /* GLOBAL LAYOUT */
+    .shell {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      min-height: 100vh;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 24px 20px 64px;
+      padding: 26px 22px;
+      gap: 22px;
     }
 
-    /* HEADER */
-    header {
+    @media (max-width: 900px) {
+      .shell {
+        grid-template-columns: minmax(0, 1fr);
+        padding-inline: 16px;
+      }
+    }
+
+    /* SIDE PANEL */
+    .sidebar {
+      position: sticky;
+      top: 22px;
+      align-self: flex-start;
+      background: radial-gradient(circle at top, #151b35 0, #070a18 50%, #050814 100%);
+      border-radius: 24px;
+      padding: 20px 18px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-strong);
+      overflow: hidden;
+    }
+
+    .sidebar-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: 10px;
+      margin-bottom: 16px;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-mark {
+    .logo-orb {
       width: 40px;
       height: 40px;
-      border-radius: 999px;
-      background: var(--accent-grad);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 20%, #ffffff 0, #ffe1f0 14%, transparent 40%),
+        conic-gradient(from 130deg, #ff4b5c, #ffb347, #5b8dff, #ff4b5c);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+      display: grid;
+      place-items: center;
       font-weight: 700;
-      font-size: 18px;
-      color: #05060a;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+      color: #050814;
+      font-size: 16px;
+      animation: orbSpin 7s linear infinite;
     }
 
-    .logo-text-main {
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      font-size: 14px;
+    .sidebar-title-main {
+      font-size: 15px;
       text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 600;
     }
 
-    .logo-text-sub {
+    .sidebar-title-sub {
       font-size: 11px;
       color: var(--text-muted);
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    nav a {
-      position: relative;
-      padding-bottom: 4px;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: var(--accent-grad);
-      transition: width var(--transition-fast);
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .pill-contact {
-      padding: 8px 14px;
+    .sidebar-nav {
+      margin-top: 14px;
       border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(10, 11, 20, 0.95);
+      padding: 6px;
+      background: rgba(5, 7, 20, 0.9);
       display: flex;
+      gap: 6px;
+      position: relative;
+      font-size: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-pill {
+      flex: 1;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 999px;
+      position: relative;
+      cursor: pointer;
+      color: var(--text-muted);
+      z-index: 1;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-pill.active {
+      color: #050814;
+      font-weight: 500;
+    }
+
+    .nav-pill-bg {
+      position: absolute;
+      inset: 4px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--accent-1), var(--accent-2));
+      transform: translateX(0%);
+      transition: transform 0.32s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 0;
+    }
+
+    .sidebar-meta {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: grid;
+      gap: 10px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
       gap: 10px;
       align-items: center;
-      font-size: 11px;
-      color: var(--text-muted);
     }
 
-    .pill-dot {
-      width: 7px;
-      height: 7px;
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       border-radius: 999px;
-      background: #19e68c;
-      box-shadow: 0 0 10px rgba(25, 230, 140, 0.6);
+      padding: 5px 10px;
+      font-size: 10px;
+      background: rgba(5, 8, 28, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* HERO */
-    .hero {
-      position: relative;
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #34e39a;
+      box-shadow: 0 0 12px rgba(52, 227, 154, 0.8);
+      animation: pulse 1.8s ease-out infinite;
+    }
+
+    .sidebar-contact {
+      margin-top: 8px;
+      font-size: 11px;
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 24px;
-      padding: 28px 24px;
-      border-radius: 28px;
-      background: radial-gradient(circle at top, #1a1b30 0, #05060a 40%, #000000 100%);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-      margin-bottom: 40px;
-      isolation: isolate;
+      gap: 5px;
     }
 
-    .hero::before {
+    .sidebar-contact a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+
+    /* MAIN CONTENT */
+    .main {
+      display: grid;
+      gap: 22px;
+    }
+
+    section {
+      background: rgba(7, 10, 24, 0.96);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-strong);
+      padding: 22px 22px 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    section::before {
       content: "";
       position: absolute;
       inset: -40%;
       background:
-        radial-gradient(circle at 0% 0%, rgba(255, 75, 92, 0.24) 0, transparent 52%),
-        radial-gradient(circle at 100% 0%, rgba(255, 179, 71, 0.18) 0, transparent 50%);
-      opacity: 0.85;
-      z-index: -2;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url("https://gaurasoftwares.com/wp-content/uploads/2019/06/5.jpg");
-      background-size: cover;
-      background-position: center;
+        radial-gradient(circle at 0% 0%, rgba(255, 75, 92, 0.15), transparent 58%),
+        radial-gradient(circle at 100% 0%, rgba(91, 141, 255, 0.16), transparent 52%);
+      opacity: 0.4;
       mix-blend-mode: soft-light;
-      opacity: 0.32;
-      z-index: -1;
-      filter: saturate(1.3) contrast(1.1);
+      pointer-events: none;
+      animation: glowSweep 14s ease-in-out infinite alternate;
     }
 
-    .hero-main {
-      display: flex;
-      flex-direction: column;
+    .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HERO SECTION */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
       gap: 18px;
+      align-items: stretch;
     }
 
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(6, 7, 14, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 10px;
       font-size: 11px;
       color: var(--text-muted);
-      width: fit-content;
     }
 
-    .hero-tag span {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-weight: 500;
-      color: #ffffff;
-    }
-
-    .hero-tag-dot {
-      width: 5px;
-      height: 5px;
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
       border-radius: 999px;
-      background: var(--accent);
+      background: rgba(3, 5, 18, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: linear-gradient(140deg, var(--accent-1), var(--accent-3));
     }
 
     .hero-title {
-      font-size: clamp(32px, 4vw, 40px);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      font-weight: 600;
+      font-size: clamp(32px, 4.2vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
     }
 
     .hero-title span {
-      background: var(--accent-grad);
+      background: linear-gradient(130deg, var(--accent-1), var(--accent-2), var(--accent-3));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .hero-subtitle {
-      font-size: 14px;
+    .hero-text {
+      font-size: 13px;
       color: var(--text-muted);
-      max-width: 480px;
+      max-width: 520px;
+      margin-bottom: 18px;
     }
 
-    .hero-cta-row {
+    .hero-cta {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 4px;
+      gap: 10px;
       align-items: center;
+      margin-bottom: 12px;
     }
 
     .btn-primary {
-      padding: 10px 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 18px;
       border-radius: 999px;
       border: none;
       cursor: pointer;
-      background-image: var(--accent-grad);
-      color: #05060a;
+      background: linear-gradient(130deg, var(--accent-1), var(--accent-2));
+      color: #050814;
       font-size: 13px;
       font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
       transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
-      text-decoration: none;
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85);
+      transform: translateY(-2px) translateZ(0);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.9);
       filter: brightness(1.05);
     }
 
     .btn-ghost {
-      padding: 9px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(6, 7, 14, 0.9);
-      color: var(--text-muted);
-      font-size: 12px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(5, 7, 20, 0.95);
+      font-size: 12px;
+      color: var(--text-muted);
       cursor: pointer;
-      text-decoration: none;
       transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
     }
 
     .btn-ghost:hover {
-      background: rgba(14, 16, 26, 0.9);
+      background: rgba(9, 11, 30, 0.98);
       border-color: rgba(255, 255, 255, 0.16);
       color: var(--text-main);
     }
 
-    .hero-meta {
+    .hero-meta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      margin-top: 8px;
       font-size: 11px;
       color: var(--text-muted);
+      margin-top: 8px;
     }
 
-    .hero-meta-item span {
+    .meta-block span {
       display: block;
     }
 
-    .hero-meta-label {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
+    .meta-label {
       font-size: 9px;
-      opacity: 0.6;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
     }
 
-    .hero-meta-value {
-      font-size: 12px;
-      color: #ffffff;
+    .meta-value {
+      color: var(--text-main);
+      margin-top: 4px;
     }
 
-    .hero-visual {
-      border-radius: 22px;
-      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08) 0, rgba(11, 12, 20, 0.95) 45%, rgba(1, 1, 3, 1) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 14px;
-      display: grid;
-      grid-template-rows: minmax(0, 1.5fr) minmax(0, 1fr);
-      gap: 12px;
+    /* HERO VISUAL */
+    .hero-visual-wrap {
       position: relative;
-      overflow: hidden;
-    }
-
-    .badge-floating {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(5, 6, 10, 0.94);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent-grad);
-    }
-
-    .hero-visual-main {
       border-radius: 18px;
+      padding: 12px;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), rgba(2, 3, 12, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.15);
       overflow: hidden;
-      position: relative;
       isolation: isolate;
     }
 
-    .hero-visual-main img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.04);
-      filter: saturate(1.3) contrast(1.1);
-    }
-
-    .hero-visual-main::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, transparent 0, rgba(0, 0, 0, 0.4) 100%);
-      mix-blend-mode: soft-light;
-    }
-
-    .hero-visual-strip {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .hero-visual-card {
+    .hero-visual-core {
+      position: relative;
       border-radius: 16px;
       overflow: hidden;
-      position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      background: rgba(10, 12, 20, 0.94);
+      background: #000;
+      min-height: 210px;
+      transform: translateZ(0);
     }
 
-    .hero-visual-card img {
+    .hero-visual-core img {
       width: 100%;
       height: 100%;
-      min-height: 90px;
       object-fit: cover;
+      transform: scale(1.06);
+      filter: saturate(1.2) contrast(1.1);
+      animation: slowlyZoom 18s ease-in-out infinite alternate;
     }
 
-    .hero-visual-card::after {
-      content: "";
+    .hero-visual-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.4), transparent);
+      background:
+        linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent),
+        radial-gradient(circle at 0 0, rgba(255, 75, 92, 0.25), transparent 55%);
       mix-blend-mode: soft-light;
     }
 
-    .hero-visual-label {
+    .hero-floating-tag {
       position: absolute;
-      bottom: 8px;
+      bottom: 12px;
+      left: 14px;
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 11px;
+      background: rgba(3, 5, 18, 0.9);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(10px);
+      animation: floatSoft 6s ease-in-out infinite alternate;
+    }
+
+    .hero-mini-strip {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .mini-card {
+      border-radius: 13px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(4, 5, 16, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      min-height: 70px;
+      transform-origin: center;
+      animation: cardPop 0.9s ease-out both;
+    }
+
+    .mini-card:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+
+    .mini-card:nth-child(2) {
+      animation-delay: 0.45s;
+    }
+
+    .mini-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.3);
+    }
+
+    .mini-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(0, 0, 0, 0.46), transparent);
+      mix-blend-mode: soft-light;
+    }
+
+    .mini-label {
+      position: absolute;
+      bottom: 7px;
       left: 10px;
       right: 10px;
       font-size: 10px;
-      color: #f9f9ff;
-      text-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+      color: #f5f5ff;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
     }
 
-    /* SECTION WRAPPER */
-    .section {
-      margin-bottom: 40px;
+    .floating-blob {
+      position: absolute;
+      top: -60px;
+      right: -40px;
+      width: 140px;
+      height: 140px;
+      border-radius: 45% 55% 65% 35%;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #ffe7f3 10%, transparent 45%),
+        conic-gradient(from 180deg, rgba(255, 75, 92, 0.95), rgba(255, 179, 71, 0.9), rgba(91, 141, 255, 1), rgba(255, 75, 92, 0.95));
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      filter: blur(0.2px);
+      animation: blobDrift 16s ease-in-out infinite alternate;
+      pointer-events: none;
     }
 
+    /* SECTION HEADERS */
     .section-header {
       display: flex;
       justify-content: space-between;
+      gap: 14px;
       align-items: flex-end;
-      gap: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .section-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 500;
       letter-spacing: -0.01em;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--accent-3);
+      margin-bottom: 3px;
     }
 
     .section-subtitle {
       font-size: 12px;
       color: var(--text-muted);
+      max-width: 380px;
+    }
+
+    @media (max-width: 700px) {
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     /* SERVICES */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
     }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius-xl);
-      padding: 16px 16px 18px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .service-card {
       position: relative;
+      border-radius: 18px;
+      padding: 14px 14px 16px;
+      background: rgba(7, 9, 26, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       overflow: hidden;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slideUpFade 0.8s ease-out forwards;
+      cursor: default;
     }
 
-    .card::before {
-      content: "";
+    .service-card:nth-child(1) { animation-delay: 0.05s; }
+    .service-card:nth-child(2) { animation-delay: 0.18s; }
+    .service-card:nth-child(3) { animation-delay: 0.31s; }
+
+    .service-shine {
       position: absolute;
       inset: -40%;
-      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 55%);
+      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.12), transparent 50%);
       opacity: 0;
       transition: opacity var(--transition-fast);
+      pointer-events: none;
     }
 
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
-      border-color: rgba(255, 255, 255, 0.16);
-      background: rgba(11, 13, 23, 0.98);
-    }
-
-    .card:hover::before {
+    .service-card:hover .service-shine {
       opacity: 1;
     }
 
-    .card-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(8, 9, 16, 0.98);
+    .service-label {
       font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
-    .card-tag-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent-grad);
-    }
-
-    .card-title {
+    .service-title {
       font-size: 14px;
       font-weight: 500;
       margin-bottom: 6px;
     }
 
-    .card-text {
+    .service-text {
       font-size: 12px;
       color: var(--text-muted);
       margin-bottom: 10px;
     }
 
-    .card-footer {
+    .service-meta-row {
       display: flex;
       justify-content: space-between;
+      gap: 8px;
       align-items: center;
       font-size: 11px;
       color: var(--text-muted);
     }
 
-    .chip {
+    .service-pill {
       padding: 3px 8px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.12);
       font-size: 10px;
     }
 
-    /* CONTACT */
-    .contact-layout {
+    /* PROCESS SECTION */
+    .process-timeline {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 20px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 18px;
     }
 
-    .contact-card {
-      padding: 18px 16px 20px;
+    @media (max-width: 900px) {
+      .process-timeline {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
-    .contact-grid {
+    .steps {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .step {
+      position: relative;
+      padding: 10px 12px 11px 32px;
+      border-radius: 13px;
+      background: rgba(5, 7, 20, 0.93);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .step-index {
+      position: absolute;
+      left: 9px;
+      top: 10px;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #ffeae7 20%, transparent 55%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      font-size: 10px;
+      display: grid;
+      place-items: center;
+      color: #050814;
+    }
+
+    .step-title {
+      color: var(--text-main);
+      font-size: 12px;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .mini-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 10px;
+    }
+
+    .mini-tag {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(3, 5, 18, 0.95);
+    }
+
+    .process-highlight {
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      background: radial-gradient(circle at 0 0, rgba(255, 75, 92, 0.18), rgba(7, 9, 22, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 12px;
+    }
+
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
       margin-top: 10px;
       font-size: 11px;
       color: var(--text-muted);
     }
 
+    .stat-block strong {
+      font-size: 18px;
+      display: block;
+      color: #ffffff;
+    }
+
+    /* CONTACT SECTION */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-details {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-block-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 3px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
     .contact-item-label {
-      text-transform: uppercase;
+      font-size: 10px;
       letter-spacing: 0.16em;
-      font-size: 9px;
-      opacity: 0.7;
-      margin-bottom: 4px;
+      text-transform: uppercase;
+      opacity: 0.75;
     }
 
     .contact-item-value {
-      font-size: 11px;
+      font-size: 12px;
       color: #ffffff;
     }
 
     .contact-item-value a {
       text-decoration: underline;
       text-decoration-style: dotted;
-      text-decoration-thickness: 1px;
       text-underline-offset: 3px;
     }
 
-    .contact-note {
-      margin-top: 14px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
     /* FORM */
-    .form-card {
-      padding: 16px 16px 18px;
-    }
-
     form {
       display: grid;
-      gap: 10px;
+      gap: 9px;
       font-size: 12px;
     }
 
     label {
       display: block;
-      margin-bottom: 3px;
       font-size: 11px;
       color: var(--text-muted);
+      margin-bottom: 3px;
     }
 
     input,
     textarea {
       width: 100%;
       border-radius: 12px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(4, 5, 10, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(2, 3, 14, 0.95);
       color: var(--text-main);
       padding: 8px 10px;
       font-family: inherit;
@@ -606,9 +792,9 @@
 
     input:focus,
     textarea:focus {
-      border-color: rgba(255, 75, 92, 0.7);
+      border-color: rgba(255, 75, 92, 0.75);
       box-shadow: 0 0 0 1px rgba(255, 75, 92, 0.4);
-      background: rgba(6, 7, 14, 1);
+      background: rgba(4, 5, 18, 0.98);
     }
 
     textarea {
@@ -618,7 +804,7 @@
     .form-row-inline {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 9px;
     }
 
     .form-footnote {
@@ -628,22 +814,22 @@
     }
 
     .btn-submit {
-      margin-top: 2px;
+      margin-top: 4px;
       width: 100%;
-      justify-content: center;
     }
 
     /* FOOTER */
     footer {
-      margin-top: 32px;
+      max-width: 1240px;
+      margin: 0 auto 18px;
+      padding-inline: 22px;
       font-size: 10px;
       color: var(--text-muted);
       display: flex;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 14px;
+      opacity: 0.9;
     }
 
     footer span strong {
@@ -651,336 +837,457 @@
       font-weight: 500;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-visual {
-        order: -1;
-      }
-      .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .contact-layout {
-        grid-template-columns: minmax(0, 1fr);
+      footer {
+        padding-inline: 16px;
       }
     }
 
-    @media (max-width: 640px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav {
-        width: 100%;
-        justify-content: space-between;
-      }
-      .hero {
-        padding: 20px 18px;
-      }
-      .services-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .page {
-        padding-inline: 16px;
-      }
+    /* ANIMATIONS */
+    @keyframes orbSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      60% { transform: scale(1.35); opacity: 0; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+
+    @keyframes glowSweep {
+      0% { transform: translate3d(0, 0, 0); opacity: 0.55; }
+      50% { transform: translate3d(-4%, 1%, 0); opacity: 0.8; }
+      100% { transform: translate3d(5%, -2%, 0); opacity: 0.4; }
+    }
+
+    @keyframes floatSoft {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(0, -6px, 0); }
+    }
+
+    @keyframes slowlyZoom {
+      0% { transform: scale(1.04); }
+      100% { transform: scale(1.12); }
+    }
+
+    @keyframes blobDrift {
+      0% { transform: translate3d(0, 0, 0) rotate(0deg); border-radius: 45% 55% 65% 35%; }
+      50% { transform: translate3d(-20px, 10px, 0) rotate(20deg); border-radius: 60% 40% 55% 45%; }
+      100% { transform: translate3d(-5px, -10px, 0) rotate(-12deg); border-radius: 50% 50% 40% 60%; }
+    }
+
+    @keyframes cardPop {
+      0% { transform: translateY(16px) scale(0.96); opacity: 0; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    @keyframes slideUpFade {
+      0% { transform: translateY(22px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <!-- HEADER -->
-    <header>
-      <div class="logo">
-        <div class="logo-mark">1A</div>
+  <div class="shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-orb">1A</div>
         <div>
-          <div class="logo-text-main">1AZ STUDIO</div>
-          <div class="logo-text-sub">Design Studio · Paris</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <div class="pill-contact">
-          <div class="pill-dot"></div>
-          <span>Now accepting new projects</span>
-        </div>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero-main">
-        <div class="hero-tag">
-          <span>Design Services</span>
-          <div class="hero-tag-dot"></div>
-          <span>Brand · Web · UI/UX</span>
-        </div>
-        <h1 class="hero-title">
-          Clean, modern visuals<br />
-          for bold <span>brands</span>.
-        </h1>
-        <p class="hero-subtitle">
-          1AZ STUDIO crafts refined visual identities, digital experiences, and creative content from the heart of Paris.
-          We blend minimal aesthetics with strong storytelling to make your brand stand out.
-        </p>
-
-        <div class="hero-cta-row">
-          <a href="#contact" class="btn-primary">
-            Request a project
-            <span>→</span>
-          </a>
-          <a href="#services" class="btn-ghost">
-            View design services
-          </a>
-        </div>
-
-        <div class="hero-meta">
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Studio</span>
-            <span class="hero-meta-value">1AZ STUDIO · Paris, France</span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Contact</span>
-            <span class="hero-meta-value">
-              <a href="mailto:contact@anviro.in.net">contact@anviro.in.net</a>
-            </span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Phone</span>
-            <span class="hero-meta-value">
-              <a href="tel:+33752933661">+33 7 52 93 36 61</a>
-            </span>
-          </div>
+          <div class="sidebar-title-main">1AZ STUDIO</div>
+          <div class="sidebar-title-sub">Digital Design Lab · Paris</div>
         </div>
       </div>
 
-      <aside class="hero-visual" aria-hidden="true">
-        <div class="badge-floating">
-          <div class="badge-dot"></div>
-          <span>Paris-based creative studio</span>
-        </div>
-
-        <div class="hero-visual-main">
-          <img
-            src="https://gaurasoftwares.com/wp-content/uploads/2019/06/5.jpg"
-            alt="Abstract modern design illustration"
-          />
-        </div>
-        <div class="hero-visual-strip">
-          <div class="hero-visual-card">
-            <img
-              src="https://omnitrix.in/uploads/banners/16174304169803.jpg"
-              alt="UI design layout concept"
-            />
-            <div class="hero-visual-label">UI/UX &amp; digital interfaces</div>
-          </div>
-          <div class="hero-visual-card">
-            <img
-              src="https://avatars.mds.yandex.net/i?id=75afd4abe0696184665c6d6657848574_l-4571216-images-thumbs&ref=rim&n=13&w=1510&h=898"
-              alt="Creative branding composition"
-            />
-            <div class="hero-visual-label">Branding &amp; visual identity</div>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Design Services</h2>
-          <p class="section-subtitle">
-            Tailored creative solutions for brands, products, and ambitious ideas.
-          </p>
-        </div>
-        <div class="section-subtitle">
-          From first sketch to final delivery — we keep everything clean, consistent, and on-brand.
-        </div>
+      <div class="sidebar-nav" id="navBar">
+        <div class="nav-pill-bg" id="navBg"></div>
+        <a href="#hero" class="nav-pill active" data-index="0">Overview</a>
+        <a href="#services" class="nav-pill" data-index="1">Services</a>
+        <a href="#contact" class="nav-pill" data-index="2">Contact</a>
       </div>
 
-      <div class="services-grid">
-        <!-- Service 1 -->
-        <article class="card">
-          <div class="card-tag">
-            <div class="card-tag-dot"></div>
-            <span>Identity &amp; Branding</span>
+      <div class="sidebar-meta">
+        <div class="meta-row">
+          <span>Availability</span>
+          <span class="status-pill">
+            <span class="status-dot"></span>
+            Accepting new projects
+          </span>
+        </div>
+        <div class="sidebar-contact">
+          <div>Based at BOULEVARD EMILE AUGIER 75016, PARIS, ILE DE FRANCE, France.</div>
+          <div>
+            <strong>Email:</strong>
+            <a href="mailto:contact@anviro.in.net">contact@anviro.in.net</a>
           </div>
-          <h3 class="card-title">Brand &amp; Visual Identity</h3>
-          <p class="card-text">
-            Logo design, color systems, typography, and full visual guidelines that define how your brand should look
-            and feel across every touchpoint.
-          </p>
-          <div class="card-footer">
-            <span class="chip">Logo · Brandbook · Assets</span>
-            <span>Perfect for new brands</span>
+          <div>
+            <strong>Phone:</strong>
+            <a href="tel:+33752933661">+33 7 52 93 36 61</a>
           </div>
-        </article>
-
-        <!-- Service 2 -->
-        <article class="card">
-          <div class="card-tag">
-            <div class="card-tag-dot"></div>
-            <span>Digital Experiences</span>
-          </div>
-          <h3 class="card-title">Web &amp; UI/UX Design</h3>
-          <p class="card-text">
-            Clean, responsive website layouts and intuitive interface design for apps, dashboards, and digital
-            products that your users will love.
-          </p>
-          <div class="card-footer">
-            <span class="chip">Figma · Prototypes</span>
-            <span>Web &amp; mobile</span>
-          </div>
-        </article>
-
-        <!-- Service 3 -->
-        <article class="card">
-          <div class="card-tag">
-            <div class="card-tag-dot"></div>
-            <span>Visual Content</span>
-          </div>
-          <h3 class="card-title">Print &amp; Creative Assets</h3>
-          <p class="card-text">
-            Posters, social media visuals, pitch decks, and presentation templates with a strong and consistent visual
-            narrative.
-          </p>
-          <div class="card-footer">
-            <span class="chip">Social · Print · Decks</span>
-            <span>Fast delivery</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Contact &amp; Project Inquiries</h2>
-          <p class="section-subtitle">
-            Tell us about your brand, product, or idea — we’ll reply with next steps and timing.
-          </p>
         </div>
       </div>
+    </aside>
 
-      <div class="contact-layout">
-        <!-- Contact info -->
-        <article class="card contact-card">
-          <div class="card-tag">
-            <div class="card-tag-dot"></div>
-            <span>Studio Details</span>
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- HERO -->
+      <section id="hero">
+        <div class="section-inner hero-grid">
+          <div>
+            <div class="chip-row">
+              <div class="chip">
+                <span class="chip-dot"></span>
+                Design Systems · UI/UX
+              </div>
+              <div class="chip">
+                <span class="chip-dot"></span>
+                Branding & Visual Identity
+              </div>
+            </div>
+
+            <h1 class="hero-title">
+              We design <span>sharp, minimal</span><br />
+              visuals for ambitious brands.
+            </h1>
+
+            <p class="hero-text">
+              1AZ STUDIO is a digital design studio crafting interfaces, brands, and visuals with a cinematic touch.
+              From early ideas to production-ready layouts, we keep everything clean, consistent, and expressive.
+            </p>
+
+            <div class="hero-cta">
+              <a href="#contact" class="btn-primary">
+                Start a project
+                <span>↗</span>
+              </a>
+              <a href="#services" class="btn-ghost">
+                See how we design
+              </a>
+            </div>
+
+            <div class="hero-meta-row">
+              <div class="meta-block">
+                <span class="meta-label">Studio</span>
+                <span class="meta-value">1AZ STUDIO · Paris, France</span>
+              </div>
+              <div class="meta-block">
+                <span class="meta-label">Focus</span>
+                <span class="meta-value">Branding · UI/UX · Creative Visuals</span>
+              </div>
+              <div class="meta-block">
+                <span class="meta-label">Languages</span>
+                <span class="meta-value">Français · English · Darija</span>
+              </div>
+            </div>
           </div>
-          <p class="card-text">
-            Based in the 16th arrondissement of Paris, we collaborate with local and international clients across
-            industries — from startups to established brands.
-          </p>
+
+          <div class="hero-visual-wrap" aria-hidden="true">
+            <div class="floating-blob"></div>
+
+            <div class="hero-visual-core">
+              <img src="https://gaurasoftwares.com/wp-content/uploads/2019/06/5.jpg" alt="Abstract digital design" />
+              <div class="hero-visual-overlay"></div>
+              <div class="hero-floating-tag">
+                Live design preview
+                <span style="font-size: 9px; opacity: 0.8;">Figma · Web · Product</span>
+              </div>
+            </div>
+
+            <div class="hero-mini-strip">
+              <div class="mini-card">
+                <img src="https://omnitrix.in/uploads/banners/16174304169803.jpg" alt="UI Layout concept" />
+                <div class="mini-label">Interface flows & UI components</div>
+              </div>
+              <div class="mini-card">
+                <img
+                  src="https://avatars.mds.yandex.net/i?id=75afd4abe0696184665c6d6657848574_l-4571216-images-thumbs&ref=rim&n=13&w=1510&h=898"
+                  alt="Branding composition"
+                />
+                <div class="mini-label">Brand grids, typography & color</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="section-inner">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker">Services</div>
+              <h2 class="section-title">Design direction from concept to launch.</h2>
+            </div>
+            <p class="section-subtitle">
+              Whether it’s a product interface, a fresh identity, or a launch campaign, we shape visuals that feel
+              precise, modern, and timeless.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-shine"></div>
+              <div class="service-label">01 · Brand & Direction</div>
+              <h3 class="service-title">Brand Identity & Systems</h3>
+              <p class="service-text">
+                Logo marks, color palettes, typography, and grids that define how your brand moves, speaks, and lives
+                across digital and print.
+              </p>
+              <div class="service-meta-row">
+                <span class="service-pill">Logo · Guidelines · Assets</span>
+                <span>Ideal for new brands</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-shine"></div>
+              <div class="service-label">02 · Product & UI/UX</div>
+              <h3 class="service-title">Product & Interface Design</h3>
+              <p class="service-text">
+                Modular UI kits, responsive screens, and UX flows for websites, dashboards, SaaS tools, and mobile
+                apps.
+              </p>
+              <div class="service-meta-row">
+                <span class="service-pill">Figma · Prototypes</span>
+                <span>Web · Mobile · SaaS</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-shine"></div>
+              <div class="service-label">03 · Visual Content</div>
+              <h3 class="service-title">Campaign & Visual Assets</h3>
+              <p class="service-text">
+                Cinematic visuals, launch material, pitch decks, and social content that stay on-brand and on-message.
+              </p>
+              <div class="service-meta-row">
+                <span class="service-pill">Decks · Social · Motion-ready</span>
+                <span>Fast, refined output</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section id="process">
+        <div class="section-inner">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker">Process</div>
+              <h2 class="section-title">A simple, transparent way to build your design.</h2>
+            </div>
+            <p class="section-subtitle">
+              From the first call to final files, we keep the flow clear and collaborative so you know exactly what’s
+              coming next.
+            </p>
+          </div>
+
+          <div class="process-timeline">
+            <div class="steps">
+              <div class="step">
+                <div class="step-index">1</div>
+                <div class="step-title">Discover & direction</div>
+                <div>
+                  We start with a short call (or mail) to understand your brand, product, and timeline. Then we define a
+                  visual direction together.
+                </div>
+                <div class="mini-tag-row">
+                  <span class="mini-tag">Moodboards</span>
+                  <span class="mini-tag">Design audit</span>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-index">2</div>
+                <div class="step-title">Concept & exploration</div>
+                <div>
+                  We explore 2–3 strong routes in Figma, share clickable previews, and iterate quickly based on your
+                  feedback.
+                </div>
+                <div class="mini-tag-row">
+                  <span class="mini-tag">UI concepts</span>
+                  <span class="mini-tag">Brand routes</span>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-index">3</div>
+                <div class="step-title">Refine & deliver</div>
+                <div>
+                  Once aligned, we refine details, create production assets, and deliver ready-to-ship files in the
+                  formats you need.
+                </div>
+                <div class="mini-tag-row">
+                  <span class="mini-tag">Design systems</span>
+                  <span class="mini-tag">Exported assets</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="process-highlight">
+              <div class="contact-block-title">A lightweight studio for focused design work.</div>
+              <p>
+                No heavy agency overhead. Just a small studio that plugs into your team, works alongside your devs or
+                marketing, and keeps the design layer sharp.
+              </p>
+              <div class="stat-row">
+                <div class="stat-block">
+                  <strong>3–6</strong>
+                  <span>Weeks for typical projects</span>
+                </div>
+                <div class="stat-block">
+                  <strong>1:1</strong>
+                  <span>Direct contact with the designer</span>
+                </div>
+                <div class="stat-block">
+                  <strong>Remote</strong>
+                  <span>Paris-based, working worldwide</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-inner">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker">Contact</div>
+              <h2 class="section-title">Tell us about your next project.</h2>
+            </div>
+            <p class="section-subtitle">
+              Use the form or reach out by email. Share links, references, or a short brief – we’ll reply with timing
+              and a simple plan.
+            </p>
+          </div>
 
           <div class="contact-grid">
-            <div>
-              <div class="contact-item-label">Company</div>
-              <div class="contact-item-value">1AZ STUDIO</div>
-            </div>
-            <div>
-              <div class="contact-item-label">Location</div>
-              <div class="contact-item-value">
-                BOULEVARD EMILE AUGIER 75016<br />
-                PARIS, ILE DE FRANCE · France
+            <div class="contact-details">
+              <div>
+                <div class="contact-block-title">Studio details</div>
+                <div class="contact-list">
+                  <div>
+                    <div class="contact-item-label">Company</div>
+                    <div class="contact-item-value">1AZ STUDIO</div>
+                  </div>
+                  <div>
+                    <div class="contact-item-label">Address</div>
+                    <div class="contact-item-value">
+                      BOULEVARD EMILE AUGIER 75016<br />
+                      PARIS, ILE DE FRANCE · France
+                    </div>
+                  </div>
+                  <div>
+                    <div class="contact-item-label">Email</div>
+                    <div class="contact-item-value">
+                      <a href="mailto:contact@anviro.in.net">contact@anviro.in.net</a>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="contact-item-label">Phone</div>
+                    <div class="contact-item-value">
+                      <a href="tel:+33752933661">+33 7 52 93 36 61</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="contact-block-title">How we like to work</div>
+                <p>
+                  Short messages, clear goals, and reference links help a lot. Feel free to write in French, English,
+                  or Darija.
+                </p>
               </div>
             </div>
+
             <div>
-              <div class="contact-item-label">Email</div>
-              <div class="contact-item-value">
-                <a href="mailto:contact@anviro.in.net">contact@anviro.in.net</a>
-              </div>
-            </div>
-            <div>
-              <div class="contact-item-label">Phone</div>
-              <div class="contact-item-value">
-                <a href="tel:+33752933661">+33 7 52 93 36 61</a>
-              </div>
+              <!-- NOTE: connect this form to a backend or service (Formspree, etc.) to actually receive messages -->
+              <form action="#" method="post">
+                <div class="form-row-inline">
+                  <div>
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required />
+                  </div>
+                  <div>
+                    <label for="brand">Brand / Company</label>
+                    <input type="text" id="brand" name="brand" placeholder="Brand, startup, studio..." />
+                  </div>
+                </div>
+
+                <div class="form-row-inline">
+                  <div>
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" placeholder="you@email.com" required />
+                  </div>
+                  <div>
+                    <label for="budget">Approx. budget</label>
+                    <input type="text" id="budget" name="budget" placeholder="e.g. €1,500–€4,000" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="type">Project type</label>
+                  <input
+                    type="text"
+                    id="type"
+                    name="type"
+                    placeholder="Branding, website, product UI, design system..."
+                  />
+                </div>
+
+                <div>
+                  <label for="message">Project details*</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Describe your project, timeline, and any links we should see."
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary btn-submit">
+                  Send brief
+                </button>
+                <div class="form-footnote">
+                  This form is a visual demo. To receive messages, connect it to your preferred mail or form service.
+                </div>
+              </form>
             </div>
           </div>
-
-          <p class="contact-note">
-            Prefer French or English — both are welcome. Share a short brief and any references you like, and we’ll
-            take it from there.
-          </p>
-        </article>
-
-        <!-- Contact form -->
-        <article class="card form-card">
-          <div class="card-tag">
-            <div class="card-tag-dot"></div>
-            <span>Project Request Form</span>
-          </div>
-
-          <!-- NOTE: to make this actually send emails, connect the form to a backend or service like Formspree, etc. -->
-          <form action="#" method="post">
-            <div class="form-row-inline">
-              <div>
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" required />
-              </div>
-              <div>
-                <label for="company">Company / Brand</label>
-                <input id="company" name="company" type="text" placeholder="Brand or company name" />
-              </div>
-            </div>
-
-            <div class="form-row-inline">
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required />
-              </div>
-              <div>
-                <label for="budget">Approx. budget (optional)</label>
-                <input id="budget" name="budget" type="text" placeholder="e.g. €2,000–€5,000" />
-              </div>
-            </div>
-
-            <div>
-              <label for="projectType">Project type</label>
-              <input
-                id="projectType"
-                name="projectType"
-                type="text"
-                placeholder="Branding, website redesign, product UI, etc."
-              />
-            </div>
-
-            <div>
-              <label for="message">Project details</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Tell us about your project, timeline, and goals."
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary btn-submit">
-              Send request
-            </button>
-            <div class="form-footnote">
-              By submitting, you agree to be contacted by 1AZ STUDIO regarding your inquiry.
-            </div>
-          </form>
-        </article>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <span>&copy; <strong>1AZ STUDIO</strong> – Design Services · Paris, France</span>
-      <span>Crafted with a clean, minimal visual language.</span>
-    </footer>
+        </div>
+      </section>
+    </main>
   </div>
+
+  <footer>
+    <span>&copy; <strong>1AZ STUDIO</strong> – Digital Design Lab · Paris, France</span>
+    <span>Minimal, motion-driven visuals for modern brands.</span>
+  </footer>
+
+  <script>
+    // Small animation for the nav pills background (purely UI, no libs)
+    const navBar = document.getElementById("navBar");
+    const navBg = document.getElementById("navBg");
+    const pills = navBar.querySelectorAll(".nav-pill");
+
+    function moveNavBg(target) {
+      const index = Number(target.dataset.index || 0);
+      const percentage = index * 100 / (pills.length);
+      navBg.style.transform = `translateX(${index * 100}%)`;
+    }
+
+    pills.forEach((pill) => {
+      pill.addEventListener("click", (e) => {
+        pills.forEach((p) => p.classList.remove("active"));
+        pill.classList.add("active");
+        moveNavBg(pill);
+      });
+    });
+  </script>
 </body>
 </html>
